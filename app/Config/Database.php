@@ -24,35 +24,25 @@ class Database extends Config
      *
      * @var array<string, mixed>
      */
-    public array $default = [
-        'DSN'          => '',
-        'hostname'     => 'localhost',
-        'username'     => 'root',
-        'password'     => '',
-        'database'     => 'counselign',
-        'DBDriver'     => 'MySQLi',
-        'DBPrefix'     => '',
-        'pConnect'     => false,  // Disable persistent connections for better transaction control
-        'DBDebug'      => false, // Disable debug in production for security
-        'charset'      => 'utf8mb4',
-        'DBCollat'     => 'utf8mb4_general_ci',
-        'swapPre'      => '',
-        'encrypt'      => false,
-        'compress'     => false,
-        'strictOn'     => true,   // Enable strict mode for better data integrity
-        'saveQueries'  => false,  // Disable query logging in production for security
-        'failover'     => [],
-        'port'         => 3306,
-        'numberNative' => false,
-        'foundRows'    => false,
-        'timeout'      => 30,     // Connection timeout in seconds
-        'connectTimeout' => 10,   // Initial connection timeout
-        'isolationLevel' => 'READ COMMITTED', // Set explicit isolation level for ACID compliance
-        'dateFormat'   => [
-            'date'     => 'Y-m-d',
-            'datetime' => 'Y-m-d H:i:s',
-            'time'     => 'H:i:s',
-        ],
+    public $default = [
+    'DSN'      => '',
+    'hostname' => getenv('MYSQL_HOST'),
+    'username' => getenv('MYSQL_USER'),
+    'password' => getenv('MYSQL_PASSWORD'),
+    'database' => getenv('MYSQL_DATABASE'),
+    'DBDriver' => 'MySQLi',
+    'DBPrefix' => '',
+    'pConnect' => false,
+    'DBDebug'  => (ENVIRONMENT !== 'production'),
+    'charset'  => 'utf8',
+    'DBCollat' => 'utf8_general_ci',
+    'swapPre'  => '',
+    'encrypt'  => false,
+    'compress' => false,
+    'strictOn' => false,
+    'failover' => [],
+    'port'     => getenv('MYSQL_PORT'),
+];
     ];
 
     //    /**
